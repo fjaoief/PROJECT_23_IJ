@@ -61,15 +61,15 @@ public class QuestManager : MonoBehaviour, IPointerClickHandler
         }
         //부대기 이미지 가져오기
         FlagSprite = Resources.LoadAll<Sprite>("quest_flags");
-        army_explanation = new string[] { "asdasdasdasd",
-            "asdasdad ",
-            "qwetgfvbrhn ",
-            "bklmsdbkaml ",
-            "vmwhdbjsdad ",
-            "vpjhwejnowkemdk",
-            "weiuorksndlcs,d",
-            "yhjmkol",
-            "mjuhbhgvgv"};
+        army_explanation = new string[] { "Chosokabe\n1.25 Number\n-25% Power",
+            "Kato\n2.0 Armour\n2.5 Mass",
+            "Konishi\n+20% Movement Speed",
+            "Kuroda\n-25% Movement Speed and Number\n+100% Damage, Armour, HP",
+            "Kobayakawa\n+100% Damage \n +200% HP",
+            "Otomo\n 3 Times Strong\n1/3 Number",
+            "Shimazu\nSlow\n+300% Mass",
+            "So\n+100% Movement Speed and Damage\n-50% HP",
+            "Ukita\n-50% Armour\n+100% HP and Damage"};
     }
 
     private void OnEnable()
