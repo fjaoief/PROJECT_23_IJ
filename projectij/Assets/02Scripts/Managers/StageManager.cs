@@ -315,6 +315,8 @@ public class StageManager : MonoBehaviour
                 // Sprite playerSprite = Resources.Load<Sprite>($"RuntimeSprites/{PlayerTypeName.ToString()}");
                 Sprite playerSprite = GameManager.gameManager_Instance.buttonSprites[(int)PlayerTypeName];
                 GameObject.Find("Player").transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = playerSprite;
+                Debug.Log("플레이어 이름은   " + (int)PlayerTypeName);
+                GameObject.Find("Player").transform.GetChild(1).GetComponent<Animator>().SetInteger("character_class", 0);
                 for (int iIndex = 1; iIndex < SquadCount; iIndex++)
                 {
                     Define.CharacterName FollowerType = GameManager.gameManager_Instance.squad[iIndex].characterName;
@@ -323,9 +325,11 @@ public class StageManager : MonoBehaviour
                     // 아직 애니메이션 완성안된애가 있네
                     Sprite targetSprite = GameManager.gameManager_Instance.buttonSprites[(int)FollowerType];
                     FollowerGO.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = targetSprite;
+                    Debug.Log("팔로워 이름은   " + (int)FollowerType);
+                    FollowerGO.transform.GetChild(1).GetComponent<Animator>().SetInteger("character_class", 0);
                     //EditorApplication.isPaused = true; //빌드 시 이 부분 주석 처리 필요합니다
-                    if (FollowerGO.transform.GetChild(1).GetComponent<Animator>() != null)
-                        FollowerGO.transform.GetChild(1).GetComponent<Animator>().runtimeAnimatorController = null;
+                    /*if (FollowerGO.transform.GetChild(1).GetComponent<Animator>() != null)
+                        FollowerGO.transform.GetChild(1).GetComponent<Animator>().runtimeAnimatorController = null;*/
                     followers.Add(FollowerGO.GetComponent<follower>());
                 }
                 //GameManager로부터 정보전달받음(난이도, 보상)

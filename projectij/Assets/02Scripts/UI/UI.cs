@@ -73,7 +73,7 @@ public class UI : MonoBehaviour
     {
         GameManager.gameManager_Instance.quest_selected = false;
         GameObject QM = Quest_UI.transform.gameObject;
-        if (QM.GetComponent<QuestManager>().selected_num !=0)
+        if (QM.GetComponent<QuestManager>().selected_num <=3)
         {
             // 빈 스쿼드자리 민병대로 채우기
             {
@@ -94,7 +94,7 @@ public class UI : MonoBehaviour
             GameManager.gameManager_Instance.quest_type = GameManager.gameManager_Instance.quest_list[i].c;
             for (int j = 0; j < 3; j++)
             {
-                GameManager.gameManager_Instance.flag_num[j] = GameManager.gameManager_Instance.quest_list[i - 1].d[j];
+                GameManager.gameManager_Instance.flag_num[j] = GameManager.gameManager_Instance.quest_list[i].d[j];
             }
             GameManager.gameManager_Instance.SaveStatus();
             StartCoroutine("LoadAsyncOperation", 1);
@@ -150,6 +150,11 @@ public class UI : MonoBehaviour
             btn.GetComponent<Button>().interactable = true;
         }
         Tomb_UI.SetActive(false);
+    }
+
+    public void gold_warning_close()
+    {
+        Troop_UI.transform.GetChild(7).GetChild(0).gameObject.SetActive(false);
     }
 
     IEnumerator LoadAsyncOperation(int SceneNumber)
