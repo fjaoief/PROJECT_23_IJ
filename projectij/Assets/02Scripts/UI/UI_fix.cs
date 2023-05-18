@@ -50,4 +50,5 @@ public class UI_fix : MonoBehaviour
         }
         setting = false;
     }
+
 }

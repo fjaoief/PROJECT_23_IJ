@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         if (gameManager_Instance == null || FindObjectOfType<GameManager>()==null)
         {
             gameManager_Instance = this;
@@ -347,24 +348,33 @@ public class GameManager : MonoBehaviour
     {
         //현재 보유중인 캐릭에따라서 리롤 달라짐
         //3명은 전체 리롤, 그외는 빈자리에 새로운 캐릭 추가
-        switch (squad.Count)
+        if(gold >100)//골드 보유중이면 리롤 가능
         {
-            case 0:
-                reroll_newone(3 - squad.Count);
-                break;
-            case 1:
-                reroll_support(squad.Count);
-                reroll_newone(3 - squad.Count);
-                break;
-            case 2:
-                reroll_support(squad.Count);
-                reroll_newone(3 - squad.Count);
-                break;
-            case 3:
-                reroll_support(squad.Count);
-                break;
+            gold -= 100;
+            switch (squad.Count)
+            {
+                case 0:
+                    reroll_newone(3 - squad.Count);
+                    break;
+                case 1:
+                    reroll_support(squad.Count);
+                    reroll_newone(3 - squad.Count);
+                    break;
+                case 2:
+                    reroll_support(squad.Count);
+                    reroll_newone(3 - squad.Count);
+                    break;
+                case 3:
+                    reroll_support(squad.Count);
+                    break;
+            }
+            SaveStatus();
         }
-        SaveStatus();
+        else
+        {
+            GameObject.Find("Troop").transform.GetChild(7).gameObject.SetActive(true);
+        }
+        
     }
 
     void reroll_support(int a)

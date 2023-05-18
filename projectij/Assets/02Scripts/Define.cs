@@ -125,7 +125,7 @@ public class Define : MonoBehaviour
         bow,
         shieldman,
         mace,
-        cheonja,
+        cheonja/*cannon*/,
         flail,
         samurai,
         end
