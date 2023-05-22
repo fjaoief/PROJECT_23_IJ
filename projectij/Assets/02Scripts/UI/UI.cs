@@ -85,7 +85,7 @@ public class UI : MonoBehaviour
 
             GameObject click = EventSystem.current.currentSelectedGameObject;
             //유지비 차감및 적용시각화
-            GameManager.gameManager_Instance.gold -= GameManager.gameManager_Instance.squad.Count * 100;//스쿼드 인원 *100만큼 돈 차감
+            GameManager.gameManager_Instance.gold -= GameManager.gameManager_Instance.squad.Count * 0;//스쿼드 인원 *100만큼 돈 차감
             GameManager.gameManager_Instance.gold_text.text = "G : " + GameManager.gameManager_Instance.gold;
             //StageManager로 정보 넘김
             int i = QM.GetComponent<QuestManager>().selected_num;
