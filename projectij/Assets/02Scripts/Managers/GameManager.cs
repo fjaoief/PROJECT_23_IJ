@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
         List<CharacterData> tempCharPool = SaveSystem.Load<List<CharacterData>>(characterPoolFilePath);
         List<CharacterData> tempTomb = SaveSystem.Load<List<CharacterData>>(tombFilePath);
         
-        if (Application.dataPath + "/gold.bin" != null)
+        if (goldFilePath != null)
         {
             gold = SaveSystem.Load<int>(goldFilePath);
         }
@@ -356,7 +356,7 @@ public class GameManager : MonoBehaviour
     {
         //현재 보유중인 캐릭에따라서 리롤 달라짐
         //3명은 전체 리롤, 그외는 빈자리에 새로운 캐릭 추가
-        if(gold >0)//골드 보유중이면 리롤 가능
+        if(gold >=0)//골드 보유중이면 리롤 가능
         {
             gold -= 100;
             switch (squad.Count)
